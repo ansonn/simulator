@@ -64,7 +64,7 @@ ncscope.*
 *.res
 
 
-P4Model/Debug/
+Debug/
 Boost/
 *.suo
 
