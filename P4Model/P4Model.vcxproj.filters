@@ -1,0 +1,143 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="头文件\Firmware">
+      <UniqueIdentifier>{e448b058-f942-4eaf-8af8-f295e595e9b7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\HalLayer">
+      <UniqueIdentifier>{1e186637-51be-4998-8a8a-4b12dd4c4202}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\PrincetonModel">
+      <UniqueIdentifier>{570b7892-232b-44f8-be73-01ffb287cd34}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Testbench">
+      <UniqueIdentifier>{9d3ef764-f5bd-43d7-baab-a9207f5ba141}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\ExModel">
+      <UniqueIdentifier>{55049f4b-a821-4474-97c6-296b4fb68b9e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\TestBench">
+      <UniqueIdentifier>{176f8d6b-6bee-49c2-ac67-741a341527a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\PrincetonModel">
+      <UniqueIdentifier>{0c86d083-52e1-450f-b892-77ce1350abcb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\HalLayer">
+      <UniqueIdentifier>{7b49f12f-d61a-49a9-92aa-7e849f2e71b9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Firmware">
+      <UniqueIdentifier>{d1c62bae-3390-423a-98f5-881f74c422f5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\ExModel">
+      <UniqueIdentifier>{fdd9c676-c46c-44cb-97fc-1e1f5d0697aa}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="P4Model.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="HalLayer\PCIeManagerCore.h">
+      <Filter>头文件\HalLayer</Filter>
+    </ClInclude>
+    <ClInclude Include="HalLayer\HalBasedef.h">
+      <Filter>头文件\HalLayer</Filter>
+    </ClInclude>
+    <ClInclude Include="HalLayer\LookupManager1Core.h">
+      <Filter>头文件\HalLayer</Filter>
+    </ClInclude>
+    <ClInclude Include="HalLayer\LookupManager2Core.h">
+      <Filter>头文件\HalLayer</Filter>
+    </ClInclude>
+    <ClInclude Include="HalLayer\LookupManager3Core.h">
+      <Filter>头文件\HalLayer</Filter>
+    </ClInclude>
+    <ClInclude Include="HalLayer\LookupManager4Core.h">
+      <Filter>头文件\HalLayer</Filter>
+    </ClInclude>
+    <ClInclude Include="DummyManager\FwDummyManager.h">
+      <Filter>头文件\Firmware</Filter>
+    </ClInclude>
+    <ClInclude Include="PrincetonModel\XtensaCpuModel.h">
+      <Filter>头文件\PrincetonModel</Filter>
+    </ClInclude>
+    <ClInclude Include="PrincetonModel\MessageQueue.h">
+      <Filter>头文件\PrincetonModel</Filter>
+    </ClInclude>
+    <ClInclude Include="PrincetonModel\DataQueue.h">
+      <Filter>头文件\PrincetonModel</Filter>
+    </ClInclude>
+    <ClInclude Include="PrincetonModel\MessageNetwork.h">
+      <Filter>头文件\PrincetonModel</Filter>
+    </ClInclude>
+    <ClInclude Include="PrincetonModel\DataNetwork.h">
+      <Filter>头文件\PrincetonModel</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="P4Model.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="HalLayer\PCIeManagerCore.cpp">
+      <Filter>源文件\HalLayer</Filter>
+    </ClCompile>
+    <ClCompile Include="HalLayer\LookupManager3Core.cpp">
+      <Filter>源文件\HalLayer</Filter>
+    </ClCompile>
+    <ClCompile Include="HalLayer\LookupManager4Core.cpp">
+      <Filter>源文件\HalLayer</Filter>
+    </ClCompile>
+    <ClCompile Include="HalLayer\LookupManager1Core.cpp">
+      <Filter>源文件\HalLayer</Filter>
+    </ClCompile>
+    <ClCompile Include="HalLayer\LookupManager2Core.cpp">
+      <Filter>源文件\HalLayer</Filter>
+    </ClCompile>
+    <ClCompile Include="PrincetonModel\XtensaCpuModel.cpp">
+      <Filter>源文件\PrincetonModel</Filter>
+    </ClCompile>
+    <ClCompile Include="PrincetonModel\MessageQueue.cpp">
+      <Filter>源文件\PrincetonModel</Filter>
+    </ClCompile>
+    <ClCompile Include="PrincetonModel\DataQueue.cpp">
+      <Filter>源文件\PrincetonModel</Filter>
+    </ClCompile>
+    <ClCompile Include="PrincetonModel\MessageNetwork.cpp">
+      <Filter>源文件\PrincetonModel</Filter>
+    </ClCompile>
+    <ClCompile Include="PrincetonModel\DataNetwork.cpp">
+      <Filter>源文件\PrincetonModel</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="P4Model.rc">
+      <Filter>资源文件</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>
