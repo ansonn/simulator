@@ -1,11 +1,11 @@
 /*---------------------------------------------------------------------------*/
-//	CopyRight: BJ-MEMBLAZE
-//	2015-08-01
-//
-//-----------------------------------------------------------------------------
+/*
+**  shuke.wang@memblaze.com
+**  2015/08~09
+*----------------------------------------------------------------------------*/
 #ifndef _MESSAGE_QUEUE_H
 #define _MESSAGE_QUEUE_H
-#include "HalBasedef.h"
+#include "Basedef.h"
 #include <boost/signals2/signal.hpp>
 #include <boost/signals2/shared_connection_block.hpp>
 #include <boost/bind.hpp>

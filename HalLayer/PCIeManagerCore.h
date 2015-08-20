@@ -5,7 +5,7 @@
 //-----------------------------------------------------------------------------
 #ifndef _PCIE_MANAGER_CORE_H
 #define _PCIE_MANAGER_CORE_H
-#include "HalBasedef.h"
+#include "Basedef.h"
 
 
 namespace PCIe 

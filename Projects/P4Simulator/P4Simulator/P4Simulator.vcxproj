@@ -53,6 +53,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>..\..\..\Boost\include\boost-1_58;..\..\..\Common;..\..\..\Dummymanager;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -81,7 +82,32 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\HalLayer\LookupManager1Core.cpp" />
+    <ClCompile Include="..\..\..\HalLayer\LookupManager2Core.cpp" />
+    <ClCompile Include="..\..\..\HalLayer\LookupManager3Core.cpp" />
+    <ClCompile Include="..\..\..\HalLayer\LookupManager4Core.cpp" />
+    <ClCompile Include="..\..\..\HalLayer\PCIeManagerCore.cpp" />
+    <ClCompile Include="..\..\..\HwModel\DataNetwork.cpp" />
+    <ClCompile Include="..\..\..\HwModel\DataQueue.cpp" />
+    <ClCompile Include="..\..\..\HwModel\MessageNetwork.cpp" />
+    <ClCompile Include="..\..\..\HwModel\MessageQueue.cpp" />
+    <ClCompile Include="..\..\..\HwModel\XtensaCpuModel.cpp" />
+    <ClCompile Include="P4Model.cpp" />
     <ClCompile Include="P4Simulator.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\Dummymanager\FwDummyManager.h" />
+    <ClInclude Include="..\..\..\HalLayer\LookupManager1Core.h" />
+    <ClInclude Include="..\..\..\HalLayer\LookupManager2Core.h" />
+    <ClInclude Include="..\..\..\HalLayer\LookupManager3Core.h" />
+    <ClInclude Include="..\..\..\HalLayer\LookupManager4Core.h" />
+    <ClInclude Include="..\..\..\HalLayer\PCIeManagerCore.h" />
+    <ClInclude Include="..\..\..\HwModel\DataNetwork.h" />
+    <ClInclude Include="..\..\..\HwModel\DataQueue.h" />
+    <ClInclude Include="..\..\..\HwModel\MessageNetwork.h" />
+    <ClInclude Include="..\..\..\HwModel\MessageQueue.h" />
+    <ClInclude Include="..\..\..\HwModel\XtensaCpuModel.h" />
+    <ClInclude Include="P4Model.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

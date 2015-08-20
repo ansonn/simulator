@@ -13,6 +13,36 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="源文件\Common">
+      <UniqueIdentifier>{f30c8707-b496-4d8c-a64b-9b5d3125bcdd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Dummymanager">
+      <UniqueIdentifier>{808ec0a3-a61a-48fc-a5b2-57186729f76b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\FwLayer">
+      <UniqueIdentifier>{dd78d449-a9e4-43a5-8424-23093104af44}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\HalLayer">
+      <UniqueIdentifier>{c1a743cb-df85-4e44-8083-c01e4297df18}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\HwModel">
+      <UniqueIdentifier>{9011fc89-9e71-46bc-af71-ffe38f59da10}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Common">
+      <UniqueIdentifier>{a259ddfb-5aa9-4c18-8189-1290b51f3559}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Dummymanager">
+      <UniqueIdentifier>{f07b54d6-3343-455f-b7cc-724170c83119}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\FwLayer">
+      <UniqueIdentifier>{d6b08e54-653e-4b25-ae67-866c9d9181a0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\HalLayer">
+      <UniqueIdentifier>{2180ab2a-751b-4e04-ac2a-5723aee1f2bc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\HwModel">
+      <UniqueIdentifier>{b01966a7-7fae-4d1d-9aa7-893572a7780a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -21,5 +51,76 @@
     <ClCompile Include="P4Simulator.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="P4Model.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\HwModel\DataNetwork.cpp">
+      <Filter>源文件\HwModel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\HwModel\DataQueue.cpp">
+      <Filter>源文件\HwModel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\HwModel\MessageNetwork.cpp">
+      <Filter>源文件\HwModel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\HwModel\MessageQueue.cpp">
+      <Filter>源文件\HwModel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\HwModel\XtensaCpuModel.cpp">
+      <Filter>源文件\HwModel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\HalLayer\LookupManager1Core.cpp">
+      <Filter>源文件\HalLayer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\HalLayer\LookupManager2Core.cpp">
+      <Filter>源文件\HalLayer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\HalLayer\LookupManager3Core.cpp">
+      <Filter>源文件\HalLayer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\HalLayer\LookupManager4Core.cpp">
+      <Filter>源文件\HalLayer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\HalLayer\PCIeManagerCore.cpp">
+      <Filter>源文件\HalLayer</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="P4Model.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\HwModel\DataNetwork.h">
+      <Filter>头文件\HwModel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\HwModel\DataQueue.h">
+      <Filter>头文件\HwModel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\HwModel\MessageNetwork.h">
+      <Filter>头文件\HwModel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\HwModel\MessageQueue.h">
+      <Filter>头文件\HwModel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\HwModel\XtensaCpuModel.h">
+      <Filter>头文件\HwModel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\HalLayer\LookupManager1Core.h">
+      <Filter>头文件\HalLayer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\HalLayer\LookupManager2Core.h">
+      <Filter>头文件\HalLayer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\HalLayer\LookupManager3Core.h">
+      <Filter>头文件\HalLayer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\HalLayer\LookupManager4Core.h">
+      <Filter>头文件\HalLayer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\HalLayer\PCIeManagerCore.h">
+      <Filter>头文件\HalLayer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Dummymanager\FwDummyManager.h">
+      <Filter>头文件\Dummymanager</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
