@@ -8,6 +8,13 @@
 
 
 
+class CP4Model {
+
+public:
+    CP4Model();
+    ~CP4Model();
+};
+
 
 
 

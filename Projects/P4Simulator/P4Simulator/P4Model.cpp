@@ -3,5 +3,16 @@
 **  shuke.wang@memblaze.com
 **  2015/08~09
 *----------------------------------------------------------------------------*/
+#include "P4Model.h"
 
+
+CP4Model::CP4Model()
+{
+
+}
+
+CP4Model::~CP4Model()
+{
+
+}
 
