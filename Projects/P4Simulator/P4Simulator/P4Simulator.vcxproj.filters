@@ -57,13 +57,7 @@
     <ClCompile Include="..\..\..\HwModel\DataNetwork.cpp">
       <Filter>源文件\HwModel</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\HwModel\DataQueue.cpp">
-      <Filter>源文件\HwModel</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\HwModel\MessageNetwork.cpp">
-      <Filter>源文件\HwModel</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\HwModel\MessageQueue.cpp">
       <Filter>源文件\HwModel</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\HwModel\XtensaCpuModel.cpp">
@@ -84,6 +78,30 @@
     <ClCompile Include="..\..\..\HalLayer\PCIeManagerCore.cpp">
       <Filter>源文件\HalLayer</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\HwModel\DeviceManager.cpp">
+      <Filter>源文件\HwModel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\HwModel\MessagePort.cpp">
+      <Filter>源文件\HwModel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\HwModel\FlashInterface.cpp">
+      <Filter>源文件\HwModel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\HwModel\Xor.cpp">
+      <Filter>源文件\HwModel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\HwModel\ListEngine.cpp">
+      <Filter>源文件\HwModel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\HwModel\Eeprom.cpp">
+      <Filter>源文件\HwModel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\HwModel\BufferManager.cpp">
+      <Filter>源文件\HwModel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\HwModel\Ddr.cpp">
+      <Filter>源文件\HwModel</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="P4Model.h">
@@ -92,13 +110,7 @@
     <ClInclude Include="..\..\..\HwModel\DataNetwork.h">
       <Filter>头文件\HwModel</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\HwModel\DataQueue.h">
-      <Filter>头文件\HwModel</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\HwModel\MessageNetwork.h">
-      <Filter>头文件\HwModel</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\HwModel\MessageQueue.h">
       <Filter>头文件\HwModel</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\HwModel\XtensaCpuModel.h">
@@ -121,6 +133,30 @@
     </ClInclude>
     <ClInclude Include="..\..\..\Dummymanager\FwDummyManager.h">
       <Filter>头文件\Dummymanager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\HwModel\DeviceManager.h">
+      <Filter>头文件\HwModel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\HwModel\MessagePort.h">
+      <Filter>头文件\HwModel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\HwModel\FlashInterface.h">
+      <Filter>头文件\HwModel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\HwModel\Xor.h">
+      <Filter>头文件\HwModel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\HwModel\ListEngine.h">
+      <Filter>头文件\HwModel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\HwModel\Eeprom.h">
+      <Filter>头文件\HwModel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\HwModel\BufferManager.h">
+      <Filter>头文件\HwModel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\HwModel\Ddr.h">
+      <Filter>头文件\HwModel</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

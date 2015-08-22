@@ -3,16 +3,10 @@
 **  shuke.wang@memblaze.com
 **  2015/08~09
 *----------------------------------------------------------------------------*/
-#include <stdlib.h>
-#include <stdio.h>
-#include <iostream>
+#ifndef _DDR_H
+#define _DDR_H
 
 
-/*
-* 
-*/
-int main(int argc, char *argv[])
-{
-	return 0;
-}
 
+
+#endif
