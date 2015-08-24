@@ -8,25 +8,22 @@
 #include "Basedef.h"
 
 
-namespace Lookup1 
+class CLookupManager1Core 
 {
 
-	class CLookupManager1Core 
-	{
-
-	public:
-		CLookupManager1Core();
-		~CLookupManager1Core();
+public:
+	CLookupManager1Core();
+	~CLookupManager1Core();
 
 
 
-	private:
-		ManagerInit m_pfnLookupManagerInit;
-		ManagerPoll m_pfnLookupManagerPoll;
-	};
-
-
+private:
+	ManagerInit m_pfnLookupManagerInit;
+	ManagerPoll m_pfnLookupManagerPoll;
 };
+
+
+
 
 
 #endif

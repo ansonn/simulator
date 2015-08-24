@@ -4,29 +4,34 @@
 **  2015/08~09
 *----------------------------------------------------------------------------*/
 #include "PCIeManagerCore.h"
-
+#include <P4Model.h>
 
 
 namespace PCIe 
 {
-
-	/*---------------------------------------------------------------------------*/
-	// 
-#include "FwDummyManager.h"
-
-	CPCIeManagerCore::CPCIeManagerCore() : m_pfnPCIeManagerInit(nullptr)
-										 , m_pfnPCIeManagerPoll(nullptr)
-	{
-		m_pfnPCIeManagerInit = DummyManager_Init;
-
-		m_pfnPCIeManagerInit(0);
-	}
-
-	CPCIeManagerCore::~CPCIeManagerCore() 
-	{
+    // firmware
+#include "DummyManager.c"
 
 
-	}
+    // hal api
+}
 
 
-} // end namespace PCIe
+/**
+*
+**/
+CPCIeManagerCore::CPCIeManagerCore() : m_pfnPCIeManagerInit(NULL)
+                                     , m_pfnPCIeManagerPoll(NULL)
+{
+    m_pfnPCIeManagerInit = PCIe::DummyManager_Init;
+
+    m_pfnPCIeManagerInit(0);
+}
+
+CPCIeManagerCore::~CPCIeManagerCore() 
+{
+
+
+}
+
+

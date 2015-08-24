@@ -6,6 +6,8 @@
 #ifndef _HAL_BASEDEF_H
 #define _HAL_BASEDEF_H
 
+#include <stdlib.h>
+#include <stdio.h>
 
 typedef unsigned char		u8;
 typedef unsigned short		u16;

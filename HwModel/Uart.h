@@ -3,18 +3,10 @@
 **  shuke.wang@memblaze.com
 **  2015/08~09
 *----------------------------------------------------------------------------*/
-#include <stdlib.h>
-#include <stdio.h>
-#include <iostream>
+#ifndef _UART_H
+#define _UART_H
 
-#include "P4Model.h"
 
-CP4Model gPBlaze4Model;
-/*
-* 
-*/
-int main(int argc, char *argv[])
-{
-	return 0;
-}
 
+
+#endif

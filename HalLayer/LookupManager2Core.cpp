@@ -11,21 +11,22 @@
 namespace Lookup2 
 {
 
-	/*---------------------------------------------------------------------------*/
-	// 
-#include "FwDummyManager.h"
+#include "DummyManager.c"
 
-	CLookupManager2Core::CLookupManager2Core() : m_pfnLookupManagerInit(nullptr)
-											   , m_pfnLookupManagerPoll(nullptr)
-	{
-
-	}
-
-	CLookupManager2Core::~CLookupManager2Core() 
-	{
+}
 
 
-	}
+CLookupManager2Core::CLookupManager2Core() : m_pfnLookupManagerInit(nullptr)
+										   , m_pfnLookupManagerPoll(nullptr)
+{
+
+}
+
+CLookupManager2Core::~CLookupManager2Core() 
+{
 
 
-} // end namespace Lookup2
+}
+
+
+

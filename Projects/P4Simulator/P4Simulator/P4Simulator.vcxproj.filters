@@ -16,9 +16,6 @@
     <Filter Include="源文件\Common">
       <UniqueIdentifier>{f30c8707-b496-4d8c-a64b-9b5d3125bcdd}</UniqueIdentifier>
     </Filter>
-    <Filter Include="源文件\Dummymanager">
-      <UniqueIdentifier>{808ec0a3-a61a-48fc-a5b2-57186729f76b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="源文件\FwLayer">
       <UniqueIdentifier>{dd78d449-a9e4-43a5-8424-23093104af44}</UniqueIdentifier>
     </Filter>
@@ -30,9 +27,6 @@
     </Filter>
     <Filter Include="头文件\Common">
       <UniqueIdentifier>{a259ddfb-5aa9-4c18-8189-1290b51f3559}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="头文件\Dummymanager">
-      <UniqueIdentifier>{f07b54d6-3343-455f-b7cc-724170c83119}</UniqueIdentifier>
     </Filter>
     <Filter Include="头文件\FwLayer">
       <UniqueIdentifier>{d6b08e54-653e-4b25-ae67-866c9d9181a0}</UniqueIdentifier>
@@ -131,9 +125,6 @@
     <ClInclude Include="..\..\..\HalLayer\PCIeManagerCore.h">
       <Filter>头文件\HalLayer</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Dummymanager\FwDummyManager.h">
-      <Filter>头文件\Dummymanager</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\HwModel\DeviceManager.h">
       <Filter>头文件\HwModel</Filter>
     </ClInclude>
@@ -157,6 +148,9 @@
     </ClInclude>
     <ClInclude Include="..\..\..\HwModel\Ddr.h">
       <Filter>头文件\HwModel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\Basedef.h">
+      <Filter>头文件\Common</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

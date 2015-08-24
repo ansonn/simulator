@@ -18,5 +18,5 @@ public:
 
 
 
-
+extern CP4Model gPBlaze4Model;
 #endif

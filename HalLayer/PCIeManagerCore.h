@@ -8,27 +8,20 @@
 #include "Basedef.h"
 
 
-namespace PCIe 
+class CPCIeManagerCore 
 {
 
-	class CPCIeManagerCore 
-	{
-
-	public:
-		CPCIeManagerCore();
-		~CPCIeManagerCore();
+public:
+	CPCIeManagerCore();
+	~CPCIeManagerCore();
 
 
 
-	private:
-		ManagerInit m_pfnPCIeManagerInit;
-		ManagerPoll m_pfnPCIeManagerPoll;
-	};
+private:
+	ManagerInit m_pfnPCIeManagerInit;
+	ManagerPoll m_pfnPCIeManagerPoll;
+};
 
 
-
-
-
-} // end namespace PCIe
 
 #endif

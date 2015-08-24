@@ -10,21 +10,22 @@
 
 namespace Lookup4 {
 
-	/*---------------------------------------------------------------------------*/
-	// 
-#include "FwDummyManager.h"
+#include "DummyManager.c"
 
-	CLookupManager4Core::CLookupManager4Core() : m_pfnLookupManagerInit(nullptr)
-											   , m_pfnLookupManagerPoll(nullptr)
-	{
-
-	}
-
-	CLookupManager4Core::~CLookupManager4Core() 
-	{
+}
 
 
-	}
+CLookupManager4Core::CLookupManager4Core() : m_pfnLookupManagerInit(nullptr)
+										   , m_pfnLookupManagerPoll(nullptr)
+{
+
+}
+
+CLookupManager4Core::~CLookupManager4Core() 
+{
 
 
-} // end namespace Lookup4
+}
+
+
+

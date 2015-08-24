@@ -53,7 +53,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>..\..\..\Boost\include\boost-1_58;..\..\..\Common;..\..\..\Dummymanager;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\Boost\include\boost-1_58;..\..\..\Common;..\..\..\Dummymanager;..\..\..\Projects\P4Simulator\P4Simulator;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -102,7 +102,7 @@
     <ClCompile Include="P4Simulator.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\Dummymanager\FwDummyManager.h" />
+    <ClInclude Include="..\..\..\Common\Basedef.h" />
     <ClInclude Include="..\..\..\HalLayer\LookupManager1Core.h" />
     <ClInclude Include="..\..\..\HalLayer\LookupManager2Core.h" />
     <ClInclude Include="..\..\..\HalLayer\LookupManager3Core.h" />

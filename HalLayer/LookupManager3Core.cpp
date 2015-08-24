@@ -10,21 +10,22 @@
 
 namespace Lookup3 {
 
-	/*---------------------------------------------------------------------------*/
-	// 
-#include "FwDummyManager.h"
+#include "DummyManager.c"
 
-	CLookupManager3Core::CLookupManager3Core() : m_pfnLookupManagerInit(nullptr)
-											   , m_pfnLookupManagerPoll(nullptr)
-	{
-
-	}
-
-	CLookupManager3Core::~CLookupManager3Core() 
-	{
+}
 
 
-	}
+CLookupManager3Core::CLookupManager3Core() : m_pfnLookupManagerInit(nullptr)
+                                           , m_pfnLookupManagerPoll(nullptr)
+{
+
+}
+
+CLookupManager3Core::~CLookupManager3Core() 
+{
 
 
-} // end namespace Lookup3
+}
+
+
+
