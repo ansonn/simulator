@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{4319E739-E9AA-4BE8-864B-66ED84811224}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>P4Simulator</RootNamespace>
+    <ProjectName>SsdSimulator</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>..\..\..\Boost\include\boost-1_58;..\..\..\Common;..\..\..\Dummymanager;..\..\..\Projects\P4Simulator\P4Simulator;..\..\..\HalLayer;.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\HalLayer\LookupManager1Core.cpp" />
+    <ClCompile Include="..\..\..\HalLayer\LookupManager2Core.cpp" />
+    <ClCompile Include="..\..\..\HalLayer\LookupManager3Core.cpp" />
+    <ClCompile Include="..\..\..\HalLayer\LookupManager4Core.cpp" />
+    <ClCompile Include="..\..\..\HalLayer\PCIeManagerCore.cpp" />
+    <ClCompile Include="..\..\..\HwModel\BufferManager.cpp" />
+    <ClCompile Include="..\..\..\HwModel\DataNetwork.cpp" />
+    <ClCompile Include="..\..\..\HwModel\DeviceManager.cpp" />
+    <ClCompile Include="..\..\..\HwModel\Eeprom.cpp" />
+    <ClCompile Include="..\..\..\HwModel\FlashInterface.cpp" />
+    <ClCompile Include="..\..\..\HwModel\ListEngine.cpp" />
+    <ClCompile Include="..\..\..\HwModel\Ddr.cpp" />
+    <ClCompile Include="..\..\..\HwModel\MessageNetwork.cpp" />
+    <ClCompile Include="..\..\..\HwModel\MessagePort.cpp" />
+    <ClCompile Include="..\..\..\HwModel\Xor.cpp" />
+    <ClCompile Include="..\..\..\HwModel\XtensaCpuModel.cpp" />
+    <ClCompile Include="SsdModel.cpp" />
+    <ClCompile Include="SsdSimulator.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\Common\Basedef.h" />
+    <ClInclude Include="..\..\..\HalLayer\LookupManager1Core.h" />
+    <ClInclude Include="..\..\..\HalLayer\LookupManager2Core.h" />
+    <ClInclude Include="..\..\..\HalLayer\LookupManager3Core.h" />
+    <ClInclude Include="..\..\..\HalLayer\LookupManager4Core.h" />
+    <ClInclude Include="..\..\..\HalLayer\PCIeManagerCore.h" />
+    <ClInclude Include="..\..\..\HwModel\BufferManager.h" />
+    <ClInclude Include="..\..\..\HwModel\DataNetwork.h" />
+    <ClInclude Include="..\..\..\HwModel\DeviceManager.h" />
+    <ClInclude Include="..\..\..\HwModel\Eeprom.h" />
+    <ClInclude Include="..\..\..\HwModel\FlashInterface.h" />
+    <ClInclude Include="..\..\..\HwModel\ListEngine.h" />
+    <ClInclude Include="..\..\..\HwModel\Ddr.h" />
+    <ClInclude Include="..\..\..\HwModel\MessageNetwork.h" />
+    <ClInclude Include="..\..\..\HwModel\MessagePort.h" />
+    <ClInclude Include="..\..\..\HwModel\Xor.h" />
+    <ClInclude Include="..\..\..\HwModel\XtensaCpuModel.h" />
+    <ClInclude Include="SsdModel.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

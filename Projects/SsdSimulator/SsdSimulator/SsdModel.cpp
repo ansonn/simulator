@@ -3,18 +3,16 @@
 **  shuke.wang@memblaze.com
 **  2015/08~09
 *----------------------------------------------------------------------------*/
-#include <stdlib.h>
-#include <stdio.h>
-#include <iostream>
+#include "SsdModel.h"
 
-#include "P4Model.h"
 
-CP4Model gPBlaze4Model;
-/*
-* 
-*/
-int main(int argc, char *argv[])
+SsdModel::SsdModel()
 {
-	return 0;
+
+}
+
+SsdModel::~SsdModel()
+{
+
 }
 

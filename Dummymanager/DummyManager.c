@@ -16,7 +16,7 @@ int DummyManager_Init(unsigned int managerID)
 
 int DummyManager_Poll(unsigned int managerID)
 {
-
+    gID += managerID;
 
 	return 0;
 }

@@ -3,16 +3,19 @@
 **  shuke.wang@memblaze.com
 **  2015/08~09
 *----------------------------------------------------------------------------*/
-#include "P4Model.h"
+#ifndef _SSDMODEL_H
+#define _SSDMODEL_H
 
 
-CP4Model::CP4Model()
-{
+class SsdModel {
 
-}
+public:
+    SsdModel();
+    ~SsdModel();
+};
 
-CP4Model::~CP4Model()
-{
 
-}
 
+
+extern SsdModel gSsdModel;
+#endif

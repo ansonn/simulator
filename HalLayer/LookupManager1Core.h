@@ -15,7 +15,7 @@ public:
 	CLookupManager1Core();
 	~CLookupManager1Core();
 
-
+    void TestSetPrintf(u32 setValue);
 
 private:
 	ManagerInit m_pfnLookupManagerInit;

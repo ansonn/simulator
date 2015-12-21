@@ -42,12 +42,6 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="P4Simulator.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="P4Model.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\HwModel\DataNetwork.cpp">
       <Filter>源文件\HwModel</Filter>
     </ClCompile>
@@ -96,11 +90,14 @@
     <ClCompile Include="..\..\..\HwModel\Ddr.cpp">
       <Filter>源文件\HwModel</Filter>
     </ClCompile>
+    <ClCompile Include="SsdModel.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="SsdSimulator.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="P4Model.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\HwModel\DataNetwork.h">
       <Filter>头文件\HwModel</Filter>
     </ClInclude>
@@ -151,6 +148,9 @@
     </ClInclude>
     <ClInclude Include="..\..\..\Common\Basedef.h">
       <Filter>头文件\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="SsdModel.h">
+      <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

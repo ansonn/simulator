@@ -15,7 +15,7 @@ public:
 	CPCIeManagerCore();
 	~CPCIeManagerCore();
 
-
+    void TestAddAndPrintf(u32 addValue);
 
 private:
 	ManagerInit m_pfnPCIeManagerInit;

@@ -4,7 +4,7 @@
 **  2015/08~09
 *----------------------------------------------------------------------------*/
 #include "PCIeManagerCore.h"
-#include <P4Model.h>
+#include "SsdModel.h"
 
 
 namespace PCIe 
@@ -24,8 +24,10 @@ CPCIeManagerCore::CPCIeManagerCore() : m_pfnPCIeManagerInit(NULL)
                                      , m_pfnPCIeManagerPoll(NULL)
 {
     m_pfnPCIeManagerInit = PCIe::DummyManager_Init;
+    m_pfnPCIeManagerPoll = PCIe::DummyManager_Poll;
 
     m_pfnPCIeManagerInit(0);
+    m_pfnPCIeManagerPoll(0);
 }
 
 CPCIeManagerCore::~CPCIeManagerCore() 
@@ -34,4 +36,9 @@ CPCIeManagerCore::~CPCIeManagerCore()
 
 }
 
+void CPCIeManagerCore::TestAddAndPrintf(u32 addValue)
+{
+    m_pfnPCIeManagerPoll(addValue);
+    printf("PCIe gID=%d\n", PCIe::gID);
+}
 
