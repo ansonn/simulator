@@ -15,9 +15,9 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "WritingSlot", "WritingSlot\
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "InterfaceTest", "InterfaceTest\InterfaceTest.vcxproj", "{2A79B0E5-A276-4CBA-9E50-88102CAA4469}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "udpSender", "udpSender\udpSender.vcxproj", "{0D7600E1-A5F4-4357-9680-79B249685BF2}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "udpSlave", "udpSlave\udpSlave.vcxproj", "{7A4A457F-BD6A-4716-9C4F-6B62D1D33241}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "udpReceiver", "udpReceiver\udpReceiver.vcxproj", "{7A4A457F-BD6A-4716-9C4F-6B62D1D33241}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "udpMaster", "udpMaster\udpMaster.vcxproj", "{0D7600E1-A5F4-4357-9680-79B249685BF2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -49,14 +49,14 @@ Global
 		{2A79B0E5-A276-4CBA-9E50-88102CAA4469}.Debug|Win32.Build.0 = Debug|Win32
 		{2A79B0E5-A276-4CBA-9E50-88102CAA4469}.Release|Win32.ActiveCfg = Release|Win32
 		{2A79B0E5-A276-4CBA-9E50-88102CAA4469}.Release|Win32.Build.0 = Release|Win32
-		{0D7600E1-A5F4-4357-9680-79B249685BF2}.Debug|Win32.ActiveCfg = Debug|Win32
-		{0D7600E1-A5F4-4357-9680-79B249685BF2}.Debug|Win32.Build.0 = Debug|Win32
-		{0D7600E1-A5F4-4357-9680-79B249685BF2}.Release|Win32.ActiveCfg = Release|Win32
-		{0D7600E1-A5F4-4357-9680-79B249685BF2}.Release|Win32.Build.0 = Release|Win32
 		{7A4A457F-BD6A-4716-9C4F-6B62D1D33241}.Debug|Win32.ActiveCfg = Debug|Win32
 		{7A4A457F-BD6A-4716-9C4F-6B62D1D33241}.Debug|Win32.Build.0 = Debug|Win32
 		{7A4A457F-BD6A-4716-9C4F-6B62D1D33241}.Release|Win32.ActiveCfg = Release|Win32
 		{7A4A457F-BD6A-4716-9C4F-6B62D1D33241}.Release|Win32.Build.0 = Release|Win32
+		{0D7600E1-A5F4-4357-9680-79B249685BF2}.Debug|Win32.ActiveCfg = Debug|Win32
+		{0D7600E1-A5F4-4357-9680-79B249685BF2}.Debug|Win32.Build.0 = Debug|Win32
+		{0D7600E1-A5F4-4357-9680-79B249685BF2}.Release|Win32.ActiveCfg = Release|Win32
+		{0D7600E1-A5F4-4357-9680-79B249685BF2}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
