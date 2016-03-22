@@ -1,57 +1,50 @@
 #include <windows.h>
 #include <stdio.h>
+#include "simcontrolIpc.h"
 
-LPTSTR SlotName = TEXT("\\\\.\\mailslot\\sample_mailslot1");
-
-BOOL WriteSlot(HANDLE hSlot, LPTSTR lpszMessage)
-{
-    BOOL fResult;
-    DWORD cbWritten;
-
-    fResult = WriteFile(hSlot,
-        lpszMessage,
-        (DWORD)(lstrlen(lpszMessage) + 1)*sizeof(TCHAR),
-        &cbWritten,
-        (LPOVERLAPPED)NULL);
-
-    if (!fResult)
-    {
-        printf("WriteFile failed with %d.\n", GetLastError());
-        return FALSE;
-    }
-
-    printf("Slot written to successfully.\n");
-
-    return TRUE;
-}
 
 int main()
 {
-    HANDLE hFile;
+    unsigned int status = 0;
+    char buffer[32];
+    unsigned int cnt = 0;
 
-    hFile = CreateFile(SlotName,
-        GENERIC_WRITE,
-        FILE_SHARE_READ,
-        (LPSECURITY_ATTRIBUTES)NULL,
-        OPEN_EXISTING,
-        FILE_ATTRIBUTE_NORMAL,
-        (HANDLE)NULL);
+    simControlIPC controlIpc;
 
-    if (hFile == INVALID_HANDLE_VALUE)
+    controlIpc.open(CONSOLE_MB, 32);
+
+    system("pause");
+
+    while (1)
     {
-        printf("CreateFile failed with %d.\n", GetLastError());
-        return FALSE;
+
+        switch (status)
+        {
+        case 0:
+            controlIpc.writeSlot(SERVER_MB, "server", 6);
+            controlIpc.writeSlot(FIMANAGER_MB, "FI", 2);
+            controlIpc.writeSlot(CONSOLE_MB, "console", 6);
+            status = 1;
+            break;
+
+        case 1:
+            memset(buffer, 0x00, 32);
+            if (controlIpc.readSlot(buffer))
+            {
+                cnt++;
+                printf("%s\n", buffer);
+            }
+            if (cnt >= 3)
+                status = 2;
+            break;
+            
+        case 2:
+            break;
+        }
+
     }
 
-    WriteSlot(hFile, TEXT("Message one for mailslot."));
-    WriteSlot(hFile, TEXT("Message two for mailslot."));
 
-    Sleep(5000);
-
-    WriteSlot(hFile, TEXT("Message three for mailslot."));
-
-    CloseHandle(hFile);
-
-    return TRUE;
+    return 0;
 }
 

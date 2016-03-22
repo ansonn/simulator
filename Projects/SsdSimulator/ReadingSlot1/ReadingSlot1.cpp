@@ -1,131 +1,30 @@
 #include <windows.h>
-#include <tchar.h>
 #include <stdio.h>
-#include <strsafe.h>
+#include "simcontrolIpc.h"
 
-HANDLE hSlot;
-LPTSTR SlotName = TEXT("\\\\.\\mailslot\\sample_mailslot1");
 
-BOOL ReadSlot()
+int main()
 {
-    DWORD cbMessage, cMessage, cbRead;
-    BOOL fResult;
-    LPTSTR lpszBuffer;
-    TCHAR achID[80];
-    DWORD cAllMessages;
-    HANDLE hEvent;
-    OVERLAPPED ov;
+    unsigned int status = 0;
+    char buffer[32] = { 0 };
+    unsigned int cnt = 0;
 
-    cbMessage = cMessage = cbRead = 0;
+    simControlIPC controlIpc;
 
-    hEvent = CreateEvent(NULL, FALSE, FALSE, TEXT("ExampleSlot1"));
-    if (NULL == hEvent)
-        return FALSE;
-    ov.Offset = 0;
-    ov.OffsetHigh = 0;
-    ov.hEvent = hEvent;
+    controlIpc.open(SERVER_MB, 32);
 
-    fResult = GetMailslotInfo(hSlot, // mailslot handle 
-        (LPDWORD)NULL,               // no maximum message size 
-        &cbMessage,                   // size of next message 
-        &cMessage,                    // number of messages 
-        (LPDWORD)NULL);              // no read time-out 
-
-    if (!fResult)
+    while (1)
     {
-        printf("GetMailslotInfo1 failed with %d.\n", GetLastError());
-        return FALSE;
-    }
-
-    if (cbMessage == MAILSLOT_NO_MESSAGE)
-    {
-        printf("Waiting1 for a message...\n");
-        return TRUE;
-    }
-
-    cAllMessages = cMessage;
-
-    while (cMessage != 0)  // retrieve all messages
-    {
-        // Create a message-number string. 
-
-        StringCchPrintf((LPTSTR)achID,
-            80,
-            TEXT("\nMessage1 #%d of %d\n"),
-            cAllMessages - cMessage + 1,
-            cAllMessages);
-
-        // Allocate memory for the message. 
-
-        lpszBuffer = (LPTSTR)GlobalAlloc(GPTR,
-            lstrlen((LPTSTR)achID)*sizeof(TCHAR) + cbMessage);
-        if (NULL == lpszBuffer)
-            return FALSE;
-        lpszBuffer[0] = '\0';
-
-        fResult = ReadFile(hSlot,
-            lpszBuffer,
-            cbMessage,
-            &cbRead,
-            &ov);
-
-        if (!fResult)
+        if (controlIpc.readSlot(buffer))
         {
-            printf("ReadFile1 failed with %d.\n", GetLastError());
-            GlobalFree((HGLOBAL)lpszBuffer);
-            return FALSE;
+            printf("%s\n", buffer);
+            controlIpc.writeSlot(CONSOLE_MB, "SERVER_ACK", 10);
+            memset(buffer, 0x00, 32);
         }
 
-        // Concatenate the message and the message-number string. 
-
-        StringCbCat(lpszBuffer,
-            lstrlen((LPTSTR)achID)*sizeof(TCHAR) + cbMessage,
-            (LPTSTR)achID);
-
-        // Display the message. 
-
-        _tprintf(TEXT("Contents1 of the mailslot: %s\n"), lpszBuffer);
-
-        GlobalFree((HGLOBAL)lpszBuffer);
-
-        fResult = GetMailslotInfo(hSlot,  // mailslot handle 
-            (LPDWORD)NULL,               // no maximum message size 
-            &cbMessage,                   // size of next message 
-            &cMessage,                    // number of messages 
-            (LPDWORD)NULL);              // no read time-out 
-
-        if (!fResult)
-        {
-            printf("GetMailslotInfo1 failed (%d)\n", GetLastError());
-            return FALSE;
-        }
     }
-    CloseHandle(hEvent);
-    return TRUE;
+
+
+    return 0;
 }
 
-BOOL WINAPI MakeSlot(LPTSTR lpszSlotName)
-{
-    hSlot = CreateMailslot(lpszSlotName,
-        0,                             // no maximum message size 
-        MAILSLOT_WAIT_FOREVER,         // no time-out for operations 
-        (LPSECURITY_ATTRIBUTES)NULL); // default security
-
-    if (hSlot == INVALID_HANDLE_VALUE)
-    {
-        printf("CreateMailslot1 failed with %d\n", GetLastError());
-        return FALSE;
-    }
-    return TRUE;
-}
-
-void main()
-{
-    MakeSlot(SlotName);
-
-    while (TRUE)
-    {
-        ReadSlot();
-        Sleep(3000);
-    }
-}
