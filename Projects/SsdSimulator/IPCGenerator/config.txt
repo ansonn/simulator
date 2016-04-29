@@ -1,0 +1,340 @@
+############################################################################
+#
+# Copyright (c) 2010 - 2015 PMC-Sierra, Inc.
+#      All Rights Reserved
+#
+# Distribution of source code or binaries derived from this file is not
+# permitted except as specifically allowed for in the PMC-Sierra
+# Software License agreement.  All copies of this source code
+# modified or unmodified must retain this entire copyright notice and
+# comment as is.
+#
+# THIS SOFTWARE IS PROVIDED "AS IS" AND WITHOUT ANY EXPRESS OR
+# IMPLIED WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED
+# WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
+#
+# Description                  :
+#
+# $Revision: 26985 $
+# $Date: 2015-06-26 16:52:22 -0700 (Fri, 26 Jun 2015) $
+# $Author: prabhum1 $
+# Release $Name: PMC_EFC_2_3_16_0 $
+#
+############################################################################
+
+#
+# The total number of IPC buffers assigned to a single outbound queue
+# may not exceed the Outbound Depths listed in the table below.
+#
+# In a many-to-one mapping configuration the total number of
+# buffers assigned to the outbound queues should not exceed to
+# Inbound Depths listed in the table below. 
+#
+# +----------+-------------+-------------+--------------+--------------+
+# |Unit Name |Inbound Ports|Inbound Depth|Outbound Ports|Outbound Depth|
+# +----------+-------------+-------------+--------------+--------------+
+# |EDMA      |      1      |      64     |      0       |       0      |
+# +----------+-------------+-------------+--------------+--------------+
+# |IDMA      |      1      |      64     |      0       |       0      |
+# +----------+-------------+-------------+--------------+--------------+
+# |ESECT_DMA |      1      |      64     |      0       |       0      |
+# +----------+-------------+-------------+--------------+--------------+
+# |ISECT_DMA |      1      |      64     |      0       |       0      |
+# +----------+-------------+-------------+--------------+--------------+
+# |HOST_INTF |      1      |      8      |      1       |       8      |
+# +----------+-------------+-------------+--------------+--------------+
+# |DMA_CPL   |      0      |      0      |      12      |       8      |
+# +----------+-------------+-------------+--------------+--------------+
+# |SUBQ_MGR  |      0      |      0      |      12      |       8      |
+# +----------+-------------+-------------+--------------+--------------+
+# |CPLQ_MGR  |      1      |      36     |      12      |       8      |
+# +----------+-------------+-------------+--------------+--------------+
+# |FLASH_INTF|      2      |      64     |      16      |       8      |
+# +----------+-------------+-------------+--------------+--------------+
+# |FLASH_ECC |      1      |      32     |      0       |       0      |
+# +----------+-------------+-------------+--------------+--------------+
+# |FLASH_BUFM|      2      |      8      |      1       |       8      |
+# +----------+-------------+-------------+--------------+--------------+
+# |BUFF_MGR  |      1      |      48     |      12      |       4      |
+# +----------+-------------+-------------+--------------+--------------+
+# |LIST_ENG  |      1      |      32     |      12      |       2      |
+# +----------+-------------+-------------+--------------+--------------+
+# |XOR_ENG   |      1      |      12     |      12      |       2      |
+# +----------+-------------+-------------+--------------+--------------+
+# |I2C_INTF  |      1      |      12     |      12      |       1      |
+# +----------+-------------+-------------+--------------+--------------+
+# |MNAN      |      1      |      2      |      1       |       1      |
+# +----------+-------------+-------------+--------------+--------------+
+# |Processors|      22     |      15     |      22      |       15     |
+# +----------+-------------+-------------+--------------+--------------+
+#
+
+#
+# Each line in this file describes a single point-to-point IPC mapping. Each line
+# should be formatted as follows...
+# 
+#<queue name> <src manager name> <dest manager name> <# message buffers> <message size> <message buffer start address>
+#
+# If a queue name is not required it should be specified as '*'.
+#
+
+# Host Interface 0 Inbound Ports
+*   PCIE_MGR    HOST_INTF0      	8       32      0x00008000
+
+# Ingress DMA 0 Inbound Ports
+*   DATA_MGR0   IDMA0:a        		4       32      0x00002000
+*   DATA_MGR1   IDMA0:a        		4       32
+*   ADMIN_MGR   IDMA0:a        		4       32
+
+# Egress DMA 0 Inbound Ports
+*   ADMIN_MGR  	EDMA0:a         	4       32      0x00000000
+#*   DATA_MGR0  	EDMA0:a         	4       32
+#*   DATA_MGR1  	EDMA0:a         	4       32
+
+
+
+# Ingress Sector DMA 0 Inbound Ports
+*   DATA_MGR0  	ISECT_DMA0:a    	8       96      0x00006000
+*   DATA_MGR1  	ISECT_DMA0:a    	8       96
+
+
+# Egress Sector DMA 0 Inbound Ports
+*   DATA_MGR0  	ESECT_DMA0:a    	8       96      0x00004000
+*   DATA_MGR1  	ESECT_DMA0:a    	8       96
+
+
+# Completion Queue Manager 0 Inbound Ports
+*   DATA_MGR0  	CPLQ_MGR0:a     	8       28      0x0000a000
+*   DATA_MGR1  	CPLQ_MGR0:a     	8       28
+*   ADMIN_MGR  	CPLQ_MGR0:a     	4       28
+
+
+# Flash Interface Inbound Ports
+*       CTRL_MGR:3      FLASH_INTF_LP:a       8               36         0x00000000
+*       GC_MGR0	        FLASH_INTF_LP:a       8               36
+*       GC_MGR1     	FLASH_INTF_HP:a       8               36
+*       SCHED_MGR0      FLASH_INTF_LP:a       15              36
+*       SCHED_MGR1      FLASH_INTF_HP:a       15              36
+*       JOURNAL_MGR     FLASH_INTF_LP:a       15              36
+*		DIAG_MGR        FLASH_INTF_LP:a    8               64
+
+# Buffer Manager Inbound Ports
+*	DATA_MGR0		BUFF_MGR:a		4		16		0x00000000
+*	DATA_MGR1		BUFF_MGR:a		4		16
+*	CTRL_MGR		BUFF_MGR:a		4       16
+*	GC_MGR0	        BUFF_MGR:a		4		16
+*	GC_MGR1	        BUFF_MGR:a		4		16
+*	LOOKUP_MGR0		BUFF_MGR:a		4		16
+*	LOOKUP_MGR1		BUFF_MGR:a		4		16
+*	FLASH_BUFM_A	BUFF_MGR:a		4		16
+*	FLASH_BUFM_F	BUFF_MGR:a		4		16
+
+# XOR Engine Inbound Ports
+*	JOURNAL_MGR 	XOR_ENG:a       6       144     0x00000000
+*	LOOKUP_MGR0 	XOR_ENG:a       1       144
+*	LOOKUP_MGR1 	XOR_ENG:a       1       144
+*	SCHED_MGR0 	    XOR_ENG:a       1       144
+*	SCHED_MGR1 	    XOR_ENG:a       1       144
+
+# I2C Interface Inbound Ports
+*       CTRL_MGR:2      I2C_INTF:a      2       48      0x00000000
+*       ADMIN_MGR       I2C_INTF:a      2       48
+*   PCIE_MGR        I2C_INTF:a      2       48
+
+
+# PCIe Manager Inbound Ports
+*	HOST_INTF0  	PCIE_MGR        8       36		&messageBuffer
+*	CTRL_MGR		PCIE_MGR		8		32
+*   ADMIN_MGR  		PCIE_MGR        1       32
+*   MNAN        	PCIE_MGR        1       8
+*   I2C_INTF        PCIE_MGR        1       44
+
+# Data Manager 0 Inbound Ports
+*   ADMIN_MGR  		DATA_MGR0       1       32		&messageBuffer
+*	BUFF_MGR		DATA_MGR0		4		16
+*	SUBQ_MGR0		DATA_MGR0		8		68
+*	LOOKUP_MGR0		DATA_MGR0		15		16
+*	LOOKUP_MGR1		DATA_MGR0		15		16
+*	CPLQ_MGR0		DATA_MGR0		8		12
+*	DMA_CPL0		DATA_MGR0		8		12
+*   LIST_ENG        DATA_MGR0       2       24
+
+# Data Manager 1 Inbound Ports
+*   ADMIN_MGR  		DATA_MGR1       1       32		&messageBuffer
+*	BUFF_MGR		DATA_MGR1		4		16
+*	SUBQ_MGR0		DATA_MGR1		8		68
+*	LOOKUP_MGR0		DATA_MGR1		15		16
+*	LOOKUP_MGR1		DATA_MGR1		15		16
+*	CPLQ_MGR0		DATA_MGR1		8		12
+*	DMA_CPL0		DATA_MGR1		8		12
+*   LIST_ENG        DATA_MGR1       2       24
+
+# Admin Command Manager Inbound Ports
+*   DATA_MGR0  		ADMIN_MGR       1       72      &messageBuffer
+*   DATA_MGR1  		ADMIN_MGR       1       72
+*   PCIE_MGR   		ADMIN_MGR       1       72
+*   CTRL_MGR   		ADMIN_MGR       1       72
+*   CPLQ_MGR0 	 	ADMIN_MGR       1       72
+*   DMA_CPL0  	 	ADMIN_MGR       4       12
+*   LOOKUP_MGR0		ADMIN_MGR		1		72
+*   LOOKUP_MGR1		ADMIN_MGR		1		72
+*   SCHED_MGR0:10	ADMIN_MGR:b     1       72
+*   SCHED_MGR1:10	ADMIN_MGR:b     1		72
+*	JOURNAL_MGR		ADMIN_MGR:b     1		72      # format_cpl_t
+*	I2C_INTF    	ADMIN_MGR       1       72
+
+# Ring Port 22
+C22   ADMIN_MGR:22  	DATA_MGR0:22    1       36      &messageBuffer
+C22   DATA_MGR0:22   	DATA_MGR1:22    1       36
+C22   DATA_MGR1:22  	PCIE_MGR:22     1       36
+C22   PCIE_MGR:22   	CTRL_MGR:22     1       36
+C22   CTRL_MGR:22   	LOOKUP_MGR0:22  1       36
+C22   LOOKUP_MGR0:22	LOOKUP_MGR1:22	1       36
+C22   LOOKUP_MGR1:22	JOURNAL_MGR:22  1       36
+C22   JOURNAL_MGR:22    GC_MGR0:22      1       36
+C22   GC_MGR0:22        GC_MGR1:22      1       36
+C22   GC_MGR1:22        SCHED_MGR0:22   1       36
+C22   SCHED_MGR0:22     SCHED_MGR1:22   1       36
+C22   SCHED_MGR1:22     ADMIN_MGR:22    1       36
+
+# Admin Command Manager cmdReady Inbound Ports
+C64 DATA_MGR0  		ADMIN_MGR:a     1       80
+C64 DATA_MGR1  		ADMIN_MGR:a     1       80
+C64 PCIE_MGR   		ADMIN_MGR:a     1       80
+
+# List Manager Inbound Ports
+*	GC_MGR0	LIST_ENG:a		8		24		0x00000000
+*	GC_MGR1	LIST_ENG:a		8		24
+*   DATA_MGR0       LIST_ENG:a      4       24
+*   DATA_MGR1       LIST_ENG:a      4       24
+
+# Control Manager Inbound Ports
+*	PCIE_MGR		CTRL_MGR		4		32		&messageBuffer
+*	FLASH_INTF_LP:0  	CTRL_MGR:3      4       24
+*	XOR_ENG     	CTRL_MGR        1       12
+*	I2C_INTF:0    	CTRL_MGR:2      1       44
+*   ADMIN_MGR  		CTRL_MGR        1       32
+*	BUFF_MGR		CTRL_MGR		4		16
+*   SCHED_MGR0  	CTRL_MGR        15       16
+*   SCHED_MGR1  	CTRL_MGR        15       16
+*   LOOKUP_MGR0  	CTRL_MGR        2       16
+*   LOOKUP_MGR1  	CTRL_MGR        2       16
+
+# GC Manager 0 Inbound Ports
+*	BUFF_MGR		GC_MGR0	4		16		&messageBuffer
+*	FLASH_INTF_LP		GC_MGR0	8		24
+*	SCHED_MGR0		GC_MGR0	15		24
+*	JOURNAL_MGR		GC_MGR0	15		24
+*	LOOKUP_MGR1		GC_MGR0	15		24
+*	LOOKUP_MGR0		GC_MGR0	15		24
+OD	LOOKUP_MGR0		GC_MGR0	15		24
+OD	LOOKUP_MGR1		GC_MGR0	15		24
+CO	LOOKUP_MGR0		GC_MGR0	15		24
+*	LIST_ENG		GC_MGR0	2		24
+*	XOR_ENG		    GC_MGR0	2		24
+*   ADMIN_MGR       GC_MGR0 1       16
+
+# GC Manager 1 Inbound Ports
+*	BUFF_MGR		GC_MGR1	4		16		&messageBuffer
+*	FLASH_INTF_HP		GC_MGR1	8		24
+*	SCHED_MGR1		GC_MGR1	15		24
+*	JOURNAL_MGR		GC_MGR1	15		24
+*	LOOKUP_MGR1		GC_MGR1	15		24
+*	LOOKUP_MGR0		GC_MGR1	15		24
+OD	LOOKUP_MGR0		GC_MGR1	15		24
+OD	LOOKUP_MGR1		GC_MGR1	15		24
+CO	LOOKUP_MGR1		GC_MGR1	15		24
+*	LIST_ENG		GC_MGR1	2		24
+*	XOR_ENG		    GC_MGR1	2		24
+*   ADMIN_MGR       GC_MGR1    1       16
+
+
+# Lookup Manager 0 Inbound Ports
+*	DATA_MGR0		LOOKUP_MGR0		15		28		&messageBuffer
+*	DATA_MGR1		LOOKUP_MGR0		15		28
+WR	DATA_MGR0		LOOKUP_MGR0		15		28
+WR	DATA_MGR1		LOOKUP_MGR0		15		28
+*	SCHED_MGR0		LOOKUP_MGR0     15		48
+*	SCHED_MGR1		LOOKUP_MGR0     15		48
+*	GC_MGR0	        LOOKUP_MGR0:11	3       28
+CO 	GC_MGR0	        LOOKUP_MGR0:11	12		28
+* 	GC_MGR1	        LOOKUP_MGR0:12	3		28
+ER 	GC_MGR0	        LOOKUP_MGR0:12	12		28
+WR	GC_MGR0	        LOOKUP_MGR0		15		28
+*	LOOKUP_MGR1		LOOKUP_MGR0		4		32
+*	JOURNAL_MGR		LOOKUP_MGR0	    15		28      #format_cpl_t
+*	CTRL_MGR		LOOKUP_MGR0	    4		28
+*	ADMIN_MGR		LOOKUP_MGR0		6		32
+*	BUFF_MGR		LOOKUP_MGR0		4		16
+*	XOR_ENG			LOOKUP_MGR0		2		12
+
+# Lookup Manager 1 Inbound Ports
+*	DATA_MGR0		LOOKUP_MGR1		15		28		&messageBuffer
+*	DATA_MGR1		LOOKUP_MGR1		15		28
+WR	DATA_MGR0		LOOKUP_MGR1		8		28
+WR	DATA_MGR1		LOOKUP_MGR1		8		28
+*	ADMIN_MGR		LOOKUP_MGR1		1		32
+*	SCHED_MGR0		LOOKUP_MGR1     15		48
+*	SCHED_MGR1		LOOKUP_MGR1     15		48
+*	GC_MGR0	        LOOKUP_MGR1:11  3		28
+CO 	GC_MGR1	        LOOKUP_MGR1:11	12		28
+* 	GC_MGR1	        LOOKUP_MGR1:12  3		28
+ER 	GC_MGR1         LOOKUP_MGR1:12	12		28
+WR	GC_MGR1	        LOOKUP_MGR1		15		28
+*	LOOKUP_MGR0		LOOKUP_MGR1		4		32
+*	JOURNAL_MGR		LOOKUP_MGR1 	8		28
+*	CTRL_MGR		LOOKUP_MGR1 	4		28
+*	BUFF_MGR		LOOKUP_MGR1		4		16
+*	XOR_ENG			LOOKUP_MGR1		2		12
+
+# Sched Manager 0 	Inbound Ports
+*	FLASH_INTF_LP:3	SCHED_MGR0:1	8		24		&messageBuffer #flash_op_cpl_t
+*   XOR_ENG:7		SCHED_MGR0:2    2		12  #xor_op_cpl_t
+*	LOOKUP_MGR0		SCHED_MGR0      15		28  #
+*	LOOKUP_MGR1		SCHED_MGR0      15		28
+WR	LOOKUP_MGR0		SCHED_MGR0      15		32
+ER	LOOKUP_MGR0		SCHED_MGR0      8		20
+*	GC_MGR0		    SCHED_MGR0      15		28  #sched_read_req_t
+*	CTRL_MGR		SCHED_MGR0      4		28  #sched_read_req_t
+WR	CTRL_MGR		SCHED_MGR0      8		32  #sched_page_frame_write_req_t
+SEQ CTRL_MGR        SCHED_MGR0      15      16  #sched_seqnum_cpl_t
+*	JOURNAL_MGR		SCHED_MGR0      4		28  #sched_read_req_t
+WR	JOURNAL_MGR		SCHED_MGR0      8		32  #sched_page_frame_write_req_t
+
+# Sched Manager 1 	Inbound Ports
+*	FLASH_INTF_HP:4	SCHED_MGR1:1	8 		24		&messageBuffer
+*   XOR_ENG:8		SCHED_MGR1:2    2 		12
+*	LOOKUP_MGR0		SCHED_MGR1      15		28
+*	LOOKUP_MGR1		SCHED_MGR1      15		28
+WR	LOOKUP_MGR1		SCHED_MGR1      15		32
+ER	LOOKUP_MGR1		SCHED_MGR1      8		20
+*	GC_MGR1		    SCHED_MGR1      15		28
+*	CTRL_MGR		SCHED_MGR1      4 		28
+WR	CTRL_MGR		SCHED_MGR1      8 		32
+SEQ CTRL_MGR        SCHED_MGR1      15      16
+*	JOURNAL_MGR		SCHED_MGR1      4 		28
+WR	JOURNAL_MGR		SCHED_MGR1      8 		32
+
+# Journal Manager 	Inbound Ports
+*	FLASH_INTF_LP		JOURNAL_MGR		8		24		&messageBuffer
+*	LOOKUP_MGR0		JOURNAL_MGR		15		20
+*	LOOKUP_MGR1		JOURNAL_MGR		15		20
+*	GC_MGR0		    JOURNAL_MGR		8		20
+*	GC_MGR1		    JOURNAL_MGR		8		20
+*	SCHED_MGR0		JOURNAL_MGR		8		20
+*	SCHED_MGR1		JOURNAL_MGR		8		20
+*   XOR_ENG			JOURNAL_MGR		2		12
+*   ADMIN_MGR       JOURNAL_MGR     1       20  # format_req_t
+
+# Diag Manager          Inbound Ports
+*   FLASH_INTF_LP           DIAG_MGR             8              32              &messageBuffer
+
+# Message Network Access Node Inbound Ports - Handled by a H/W FIFO, so depth = 1
+*   PCIE_MGR   		MNAN:a          0       8      0x00000000
+
+# Flash Buffer Manager Inbound Ports
+#  'A' designates the port connecting to FLASH_BUFM's BufferAlloc completion queue
+#  'F' designates the port connecting to FLASH_BUFM's BufferFree  completion queue
+#
+*	BUFF_MGR	FLASH_BUFM_A:a		4		16			0x00002c80
+*	BUFF_MGR	FLASH_BUFM_F:a		4		16			0x00002d00

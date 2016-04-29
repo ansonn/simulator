@@ -1,0 +1,116 @@
+############################################################################
+#
+# Copyright (c) 2010 - 2015 PMC-Sierra, Inc.
+#      All Rights Reserved
+#
+# Distribution of source code or binaries derived from this file is not
+# permitted except as specifically allowed for in the PMC-Sierra
+# Software License agreement.  All copies of this source code
+# modified or unmodified must retain this entire copyright notice and
+# comment as is.
+#
+# THIS SOFTWARE IS PROVIDED "AS IS" AND WITHOUT ANY EXPRESS OR
+# IMPLIED WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED
+# WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
+#
+# Description                  :
+#
+# $Revision: 26985 $
+# $Date: 2015-06-26 16:52:22 -0700 (Fri, 26 Jun 2015) $
+# $Author: prabhum1 $
+# Release $Name: PMC_EFC_2_3_16_0 $
+#
+############################################################################
+
+#
+# The total number of IPC buffers assigned to a single outbound queue
+# may not exceed the Outbound Depths listed in the table below.
+#
+# In a many-to-one mapping configuration the total number of
+# buffers assigned to the outbound queues should not exceed to
+# Inbound Depths listed in the table below. 
+#
+# +----------+-------------+-------------+--------------+--------------+
+# |Unit Name |Inbound Ports|Inbound Depth|Outbound Ports|Outbound Depth|
+# +----------+-------------+-------------+--------------+--------------+
+# |EDMA      |      1      |      64     |      0       |       0      |
+# +----------+-------------+-------------+--------------+--------------+
+# |IDMA      |      1      |      64     |      0       |       0      |
+# +----------+-------------+-------------+--------------+--------------+
+# |ESECT_DMA |      1      |      64     |      0       |       0      |
+# +----------+-------------+-------------+--------------+--------------+
+# |ISECT_DMA |      1      |      64     |      0       |       0      |
+# +----------+-------------+-------------+--------------+--------------+
+# |HOST_INTF |      1      |      8      |      1       |       8      |
+# +----------+-------------+-------------+--------------+--------------+
+# |DMA_CPL   |      0      |      0      |      12      |       8      |
+# +----------+-------------+-------------+--------------+--------------+
+# |SUBQ_MGR  |      0      |      0      |      12      |       8      |
+# +----------+-------------+-------------+--------------+--------------+
+# |CPLQ_MGR  |      1      |      32     |      12      |       8      |
+# +----------+-------------+-------------+--------------+--------------+
+# |FLASH_INTF|      2      |      64     |      16      |       8      |
+# +----------+-------------+-------------+--------------+--------------+
+# |FLASH_ECC |      1      |      32     |      0       |       0      |
+# +----------+-------------+-------------+--------------+--------------+
+# |FLASH_BUFM|      2      |      8      |      1       |       8      |
+# +----------+-------------+-------------+--------------+--------------+
+# |BUFF_MGR  |      1      |      48     |      12      |       4      |
+# +----------+-------------+-------------+--------------+--------------+
+# |LIST_MGR  |      1      |      32     |      12      |       2      |
+# +----------+-------------+-------------+--------------+--------------+
+# |XOR_ENG   |      1      |      12     |      12      |       2      |
+# +----------+-------------+-------------+--------------+--------------+
+# |I2C_INTF  |      1      |      12     |      12      |       1      |
+# +----------+-------------+-------------+--------------+--------------+
+# |MNAN      |      1      |      2      |      1       |       1      |
+# +----------+-------------+-------------+--------------+--------------+
+# |Processors|      22     |      15     |      22      |       15     |
+# +----------+-------------+-------------+--------------+--------------+
+#
+# HW Field Description
+# Hardware with Message Queue Controls = 1
+# Hardware with NO Message Queue Controls = 3
+
+#Name               HW      Match   OB Mask                 IB Mask                 OB Depth    IB Depth
+EDMA0               1       0       0xffffffffffffffff      0xfffffffffffffffe      0           64
+IDMA0               1       0       0xffffffffffffffff      0xfffffffffffffffd      0           64
+ESECT_DMA0          1       0       0xffffffffffffffff      0xfffffffffffffffb      0           64
+ISECT_DMA0          1       0       0xffffffffffffffff      0xfffffffffffffff7      0           64
+HOST_INTF0          1       0       0xfffeffffffffffff      0xffffffffffffffef      8           8
+DMA_CPL0            1       0       0xfffffffffffff000      0xffffffffffffffff      8           0
+SUBQ_MGR0           1       0       0xfffffffff000ffff      0xffffffffffffffff      8           0
+CPLQ_MGR0           1       0       0xfffff000ffffffff      0xffffffffffffffdf      8           36
+EDMA1               1       0       0xffffffffffffffff      0xfffffffffffffffe      0           64
+IDMA1               1       0       0xffffffffffffffff      0xfffffffffffffffd      0           64
+ESECT_DMA1          1       0       0xffffffffffffffff      0xfffffffffffffffb      0           64
+ISECT_DMA1          1       0       0xffffffffffffffff      0xfffffffffffffff7      0           64
+HOST_INTF1          1       0       0xfffeffffffffffff      0xffffffffffffffef      8           8
+DMA_CPL1            1       0       0xfffffffffffff000      0xffffffffffffffff      8           0
+SUBQ_MGR1           1       0       0xfffffffff000ffff      0xffffffffffffffff      8           0
+CPLQ_MGR1           1       0       0xfffff000ffffffff      0xffffffffffffffdf      8           36
+FLASH_INTF_LP       1       0       0xffffffffffff0000      0xfffffffffffffffe      8           64
+FLASH_INTF_HP       1       0       0xffffffffffff0000      0xfffffffffffffffd      8           64
+FLASH_ECC           1       0       0xffffffffffffffff      0xfffffffffffffffb      8           32
+FLASH_BUFM_A        1       0       0xfffffffffffeffff      0xfffffffffffffff7      8           8
+FLASH_BUFM_F        1       0       0xfffffffffffeffff      0xffffffffffffffef      8           8
+BUFF_MGR            1       0       0xfffffffffffff000      0xfffffffffffffffe      4           48
+LIST_ENG            1       0       0xfffffffffffff000      0xfffffffffffffffe      2           32
+XOR_ENG             1       0       0xfffffffffffff000      0xfffffffffffffffe      2           12
+I2C_INTF            1       0       0xfffffffffffff000      0xfffffffffffffffe      1           12
+MNAN                3       0       0xfffffffffffff000      0xfffffffffffffffe      1           1
+# managers.
+CTRL_MGR            0       0       0xffffffffff800001      0xffffffffff800001      15          15
+DATA_MGR0           0       0       0xffffffffff800001      0xffffffffff800001      15          15
+DATA_MGR1           0       0       0xffffffffff800001      0xffffffffff800001      15          15
+PCIE_MGR            0       0       0xffffffffff800001      0xffffffffff800001      15          15
+ADMIN_MGR           0       0       0xffffffffff800001      0xffffffffff800001      15          15
+LOOKUP_MGR0         0       0       0xffffffffff800001      0xffffffffff800001      15          15
+LOOKUP_MGR1         0       0       0xffffffffff800001      0xffffffffff800001      15          15
+GC_MGR0             0       0       0xffffffffff800001      0xffffffffff800001      15          15
+GC_MGR1		        0       0       0xffffffffff800001      0xffffffffff800001      15          15
+SCHED_MGR0          0       0       0xffffffffff800001      0xffffffffff800001      15          15
+SCHED_MGR1		    0       0       0xffffffffff800001      0xffffffffff800001      15          15
+JOURNAL_MGR         0       0       0xffffffffff800001      0xffffffffff800001      15          15
+LIST_MGR            0       0       0xffffffffff800001      0xffffffffff800001      15          15
+DIAG_MGR            0       0       0xffffffffffc00001      0xffffffffffc00001      15          15

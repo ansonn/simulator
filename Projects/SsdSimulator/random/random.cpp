@@ -23,6 +23,9 @@ int _tmain(int argc, _TCHAR* argv[])
             , rand() % 10
             , rand() % 10);
     }
+    printf("sizeof(LONG)=%d\n", sizeof(long));
+
+    system("pause");
 
     return 0;
 }
