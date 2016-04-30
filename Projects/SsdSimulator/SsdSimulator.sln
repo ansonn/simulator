@@ -31,6 +31,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "listProcess", "ConsoleAppli
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "IPCGenerator", "IPCGenerator\IPCGenerator.vcxproj", "{500FB980-DF01-4315-A99C-8B15CD026FF3}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ReadWriteConfigFile", "ReadWriteConfigFile\ReadWriteConfigFile.vcxproj", "{8A48513C-A1A0-4C40-B508-3EADB8A70F92}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Mixed Platforms = Debug|Mixed Platforms
@@ -183,6 +185,16 @@ Global
 		{500FB980-DF01-4315-A99C-8B15CD026FF3}.Release|Win32.ActiveCfg = Release|Win32
 		{500FB980-DF01-4315-A99C-8B15CD026FF3}.Release|Win32.Build.0 = Release|Win32
 		{500FB980-DF01-4315-A99C-8B15CD026FF3}.Release|x64.ActiveCfg = Release|Win32
+		{8A48513C-A1A0-4C40-B508-3EADB8A70F92}.Debug|Mixed Platforms.ActiveCfg = Debug|Win32
+		{8A48513C-A1A0-4C40-B508-3EADB8A70F92}.Debug|Mixed Platforms.Build.0 = Debug|Win32
+		{8A48513C-A1A0-4C40-B508-3EADB8A70F92}.Debug|Win32.ActiveCfg = Debug|Win32
+		{8A48513C-A1A0-4C40-B508-3EADB8A70F92}.Debug|Win32.Build.0 = Debug|Win32
+		{8A48513C-A1A0-4C40-B508-3EADB8A70F92}.Debug|x64.ActiveCfg = Debug|Win32
+		{8A48513C-A1A0-4C40-B508-3EADB8A70F92}.Release|Mixed Platforms.ActiveCfg = Release|Win32
+		{8A48513C-A1A0-4C40-B508-3EADB8A70F92}.Release|Mixed Platforms.Build.0 = Release|Win32
+		{8A48513C-A1A0-4C40-B508-3EADB8A70F92}.Release|Win32.ActiveCfg = Release|Win32
+		{8A48513C-A1A0-4C40-B508-3EADB8A70F92}.Release|Win32.Build.0 = Release|Win32
+		{8A48513C-A1A0-4C40-B508-3EADB8A70F92}.Release|x64.ActiveCfg = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
