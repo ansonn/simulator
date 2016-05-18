@@ -55,37 +55,39 @@ int _tmain(int argc, TCHAR* argv[], TCHAR* envp[])
 
 void simNorflashChipErase(void)
 {
-    CFile norFlashData;
-    CFileException cfileException;
     u8 buf[SIM_NOR_SECTOR_SIZE];
     memset(buf, 0xFF, SIM_NOR_SECTOR_SIZE);
-    norFlashData.Open(_T("norFlashData.bin"), CFile::modeWrite, &cfileException);
+    
+    FILE *fp;
+    fopen_s(&fp, "norFlashData.bin", "wb");
     for (u32 i = 0; i < SIM_NOR_SECTOR_MAX; i++)
     {
-        norFlashData.Write(buf, SIM_NOR_SECTOR_SIZE);;
+        fwrite(buf, 1, SIM_NOR_SECTOR_SIZE, fp);
     }
-    norFlashData.Close();
+    fclose(fp);
 }
 
 void simNorflashSectErase(u32 address)
 {
-    CFile norFlashData;
     u8 buf[SIM_NOR_SECTOR_SIZE];
     memset(buf, 0xFF, SIM_NOR_SECTOR_SIZE);
-    norFlashData.Open(_T("norFlashData.bin"), CFile::modeWrite);
-    norFlashData.Seek(address & (~SIM_NOR_SECTOR_ADDR_MASK), CFile::begin);
-    norFlashData.Write(buf, SIM_NOR_SECTOR_SIZE);
-    norFlashData.Close();
+
+    FILE *fp;
+    fopen_s(&fp, "norFlashData.bin", "wb");
+    fseek(fp, address & (~SIM_NOR_SECTOR_ADDR_MASK), SEEK_SET);
+    fwrite(buf, 1, SIM_NOR_SECTOR_SIZE, fp);
+    fclose(fp);
 }
 
 void simNorflashWrite(u32 address, void *data, u32 len)
 {
-    CFile norFlashData;
     u8 buf[SIM_NOR_SECTOR_SIZE];
     ASSERT(len <= SIM_NOR_SECTOR_SIZE);
-    norFlashData.Open(_T("norFlashData.bin"), CFile::modeReadWrite);
-    norFlashData.Seek(address, CFile::begin);
-    norFlashData.Read(buf, len);
+
+    FILE *fp;
+    ASSERT(fopen_s(&fp, "norFlashData.bin", "rb+") == 0);
+    fseek(fp, address, SEEK_SET);
+    fread(buf, 1, len, fp);
 
     for (u32 i = 0; i < len; i++)
     {
@@ -93,18 +95,18 @@ void simNorflashWrite(u32 address, void *data, u32 len)
             ASSERT(0);
     }
 
-    norFlashData.Seek(address, CFile::begin);
-    norFlashData.Write(data, len);
-    norFlashData.Close();
+    fseek(fp, address, SEEK_SET);
+    fwrite(data, 1, len, fp);
+    fclose(fp);
 }
 
 void simNorflashRead(u32 address, void *data, u32 len)
 {
-    CFile norFlashData;
-    norFlashData.Open(_T("norFlashData.bin"), CFile::modeReadWrite);
-    norFlashData.Seek(address, CFile::begin);
-    norFlashData.Read(data, len);
-    norFlashData.Close();
+    FILE *fp;
+    fopen_s(&fp, "norFlashData.bin", "rb");
+    fseek(fp, address, SEEK_SET);
+    fread(data, 1, len, fp);
+    fclose(fp);
 }
 
 void testMain(void)
