@@ -48,95 +48,72 @@ int _tmain(int argc, TCHAR* argv[], TCHAR* envp[])
 
 	return nRetCode;
 }
-static inline u32 tryConvertToDigits(LPCTSTR inputStr, TCHAR **stopPtr, bool &successful)
+#define SIM_NOR_SECTOR_SIZE 4096
+#define SIM_NOR_SECTOR_ADDR_MASK 0x0FFF
+#define SIM_NOR_SECTOR_ERASED 1
+#define SIM_NOR_SECTOR_MAX 1024
+
+void simNorflashChipErase(void)
 {
-    TCHAR *scanStopPtr;
-    u32 tempValue = (u32)_tcstoui64(inputStr, &scanStopPtr, 0);
-
-    successful = (inputStr != scanStopPtr && tempValue < 0x100000000ULL);
-
-    if (stopPtr != NULL)
+    CFile norFlashData;
+    CFileException cfileException;
+    u8 buf[SIM_NOR_SECTOR_SIZE];
+    memset(buf, 0xFF, SIM_NOR_SECTOR_SIZE);
+    norFlashData.Open(_T("norFlashData.bin"), CFile::modeWrite, &cfileException);
+    for (u32 i = 0; i < SIM_NOR_SECTOR_MAX; i++)
     {
-        *stopPtr = scanStopPtr;
+        norFlashData.Write(buf, SIM_NOR_SECTOR_SIZE);;
     }
-
-    return (u32)tempValue;
+    norFlashData.Close();
 }
 
-#define NOR_FLASH_PAGE_BUF_SIZE     1024
-void simNorflashWrite(u32 sectorIdx, u32 pageIdx, u8 *data, u32 len)
+void simNorflashSectErase(u32 address)
 {
-    TCHAR addrBuf[64] = _T("");
-    TCHAR pageData[NOR_FLASH_PAGE_BUF_SIZE] = _T("");
-
-    ASSERT(len > 0);
-    _snwprintf_s(addrBuf, sizeof(addrBuf), _T("sector%d_page%d"), sectorIdx, pageIdx);
-    for (u32 i = 0; i < len; i++)
-    {
-        TCHAR tBuf[32] = { 0 };
-        _snwprintf_s(tBuf, sizeof(tBuf), _T("0x%02x,"), data[i]);
-        _tcsncat_s(pageData, NOR_FLASH_PAGE_BUF_SIZE, tBuf, 32);
-    }
-    WritePrivateProfileString(_T("norFlash"), addrBuf, pageData, _T(".\\config_1.ini"));
+    CFile norFlashData;
+    u8 buf[SIM_NOR_SECTOR_SIZE];
+    memset(buf, 0xFF, SIM_NOR_SECTOR_SIZE);
+    norFlashData.Open(_T("norFlashData.bin"), CFile::modeWrite);
+    norFlashData.Seek(address & (~SIM_NOR_SECTOR_ADDR_MASK), CFile::begin);
+    norFlashData.Write(buf, SIM_NOR_SECTOR_SIZE);
+    norFlashData.Close();
 }
 
-void simNorflashRead(u32 sectorIdx, u32 pageIdx, u8 *data, u32 len)
+void simNorflashWrite(u32 address, void *data, u32 len)
 {
-    TCHAR addrBuf[64] = { 0 };
-    TCHAR pageData[NOR_FLASH_PAGE_BUF_SIZE] = { 0 };
-
-    _snwprintf_s(addrBuf, sizeof(addrBuf), _T("sector%d_page%d"), sectorIdx, pageIdx);
-    GetPrivateProfileString(_T("norFlash"), addrBuf, _T(""), pageData, NOR_FLASH_PAGE_BUF_SIZE, _T(".\\config_1.ini"));
-
-    if (_tcscmp(pageData, _T("")) == 0)
-    {
-        FillMemory(data, len, 0xFF);
-        return;
-    }
-
-    bool successful = false;
-    TCHAR *startPtr = pageData;
-    TCHAR *stopPtr = nullptr;
+    CFile norFlashData;
+    u8 buf[SIM_NOR_SECTOR_SIZE];
+    ASSERT(len <= SIM_NOR_SECTOR_SIZE);
+    norFlashData.Open(_T("norFlashData.bin"), CFile::modeReadWrite);
+    norFlashData.Seek(address, CFile::begin);
+    norFlashData.Read(buf, len);
 
     for (u32 i = 0; i < len; i++)
     {
-        data[i] = (u8)_tcstoui64(startPtr, &stopPtr, 0);
-        ASSERT(startPtr != stopPtr);
-        startPtr = stopPtr;
-        while (*startPtr == ',')
-            startPtr++;
+        if (buf[i] != 0xFF)
+            ASSERT(0);
     }
 
+    norFlashData.Seek(address, CFile::begin);
+    norFlashData.Write(data, len);
+    norFlashData.Close();
+}
+
+void simNorflashRead(u32 address, void *data, u32 len)
+{
+    CFile norFlashData;
+    norFlashData.Open(_T("norFlashData.bin"), CFile::modeReadWrite);
+    norFlashData.Seek(address, CFile::begin);
+    norFlashData.Read(data, len);
+    norFlashData.Close();
 }
 
 void testMain(void)
 {
-/*
-    TCHAR path[MAX_PATH] = { 0 };
-    TCHAR sectionPair[2048];
-    TCHAR filterText[1024];
-    UINT32 len;
-    TCHAR *pConfigFile = _T(".\\config.ini");
-    TCHAR *pcur;
+    simNorflashChipErase();
 
-    WIN32_FIND_DATA FindFileData;
-    HANDLE hFind;
-    hFind = FindFirstFile(pConfigFile, &FindFileData);
-    if (hFind == INVALID_HANDLE_VALUE || PathIsFileSpec(pConfigFile))
-    {
-        _tprintf(_T("File %s is not exist or path is invalid\n"), pConfigFile);
-        FindClose(hFind);
-        exit(-1);
-    }
-    FindClose(hFind);
-    _tcsncpy_s(path, pConfigFile, MAX_PATH);
-*/
-    u8 dataIn[8] = { 0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07 };
-    u8 dataOut[8] = { 0 };
-    simNorflashWrite(1, 0, dataIn, 8);
-    simNorflashWrite(1, 1, dataIn, 8);
-    simNorflashWrite(1, 2, dataIn, 8);
-    simNorflashRead(1, 0, dataOut, 8);
+    u8 buf[SIM_NOR_SECTOR_SIZE] = { 0 };
+    memset(buf, 0xaa, SIM_NOR_SECTOR_SIZE);
+    simNorflashWrite(4, buf, 4);
 }
 
 
